@@ -76,13 +76,13 @@ app.put('/api/student/:id' ,(req,res) => {
 
 
 app.delete('/api/student/:id' ,(req,res)=>{
-    const idtosersch = req.params.id;
-    const matchedIdx = studentData.findIndex((student) => student.id === Number(idtosersc));
-    if(matchedIdx === -1){
+    const idx = req.params.idx;
+    const matchedidx = studentData.findIndex((student)=> student.idx ===Number(idx));
+    if (matchedidx === -1){
         res.sendStatus(404);
     }else{
-        studentData.splice(matchedIdx, 1);
-        res.sendStatus(200); 
+        studentData.splice(matchedidx, 1);
+        res.sendStatus(200);
     }
 });
  
