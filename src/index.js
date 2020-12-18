@@ -52,30 +52,34 @@ app.put('/api/student/:id' ,(req,res) => {
     if(specificidx === -1){
         res.sendStatus(400); 
     }else {
-        if(!isNullorUndefined(name)){
+        if(isNullorUndefined(name)&& isNullorUndefined(currentClass) && isNullorUndefined(division)){
+            res.sendStatus(400);
+        }else{
+            if(!isNullorUndefined(name)){
             studentData[specificidx].name = name;
             res.sendStatus(200);
-        }else if(!isNullorUndefined(currentClass)){
+            }
+            if(!isNullorUndefined(currentClass)){
             studentData[specificidx].currentClass =Number(currentClass);
             res.sendStatus(200);
-        }else if(!isNullorUndefined(division)){
+            }
+             if(!isNullorUndefined(division)){
             studentData[specificidx].division = division;
             res.sendStatus(200);
-        }
-        else{
+            }
             res.sendStatus(400);
-        }
     }
+    } 
 });
 
 
 app.delete('/api/student/:id' ,(req,res)=>{
     const id = req.params.id;
     const matchedidx = studentData.findIndex((x)=> x.id === Number(id));
-    if(matchedidx===-1){
+    if (matchedidx===-1){
         res.sendStatus(404);
     }else{
-        studentData.splice(matchedidx,1);
+        studentData.splice(matchedidx, 1);
         res.sendStatus(200);
     }
 });
