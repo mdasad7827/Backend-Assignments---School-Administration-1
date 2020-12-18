@@ -82,7 +82,7 @@ app.delete('/api/student/:id' ,(req,res)=>{
         res.sendStatus(404);
     }else{
         studentData.splice(matchedIdx, 1);
-        res.sendStatus(200);
+        res.sendStatus(200); 
     }
 });
  
