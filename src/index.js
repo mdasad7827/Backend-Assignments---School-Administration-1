@@ -5,7 +5,7 @@ const port = 8080;
 const studentArray = require('./InitialData');
 app.use(express.urlencoded());
 
-const studentData = [...studentArray];
+let studentData = [...studentArray];
 let maxid = studentData.length;
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
@@ -75,13 +75,14 @@ app.put('/api/student/:id' ,(req,res) => {
 });
 
 
-app.delete("/api/student/:id" ,(req, res)=>{
+app.delete("/api/student/:id",(req, res)=> {
     const idtosearch = req.params.id;
-    const matchedidx = studentData.findIndex((student) => student.id=== Number(idtosearch));
-    if (matchedidx === -1){
+    const matchedidx = studentData.findIndex((student) => student.id === Number(idtosearch));
+    if(matchedidx === -1){
         res.sendStatus(404);
-    } else {
-        studentData.splice(matchedidx, 1);
+    }
+    else{
+        studentData.splice(matchedidx , 1);
         res.sendStatus(200);
     }
 });
