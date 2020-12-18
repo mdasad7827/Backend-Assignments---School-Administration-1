@@ -76,9 +76,9 @@ app.put('/api/student/:id' ,(req,res) => {
 
 
 app.delete('/api/student/:id' ,(req,res)=>{
-    const id = req.params.id;
-    const matchedidx = studentData.findIndex((x)=> x.id === Number(id));
-    if (matchedidx===-1){
+    const idx = req.params.idx;
+    const matchedidx = studentData.findIndex((x)=> x.idx ===Number(idx));
+    if (matchedidx === -1){
         res.sendStatus(404);
     }else{
         studentData.splice(matchedidx, 1);
@@ -87,6 +87,6 @@ app.delete('/api/student/:id' ,(req,res)=>{
 });
  
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+app.listen(port, () => console.log(`App listening on port ${port}!`));
 
 module.exports = app;   
