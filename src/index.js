@@ -41,7 +41,7 @@ app.post('/api/student', (req,res) => {
     newStudent.id = newid;
     newStudent.currentClass = Number(currentClass);
     studentData.push(newStudent);
-    res.send({id:ID});
+    res.send({id:newid});
     }
 });
 
