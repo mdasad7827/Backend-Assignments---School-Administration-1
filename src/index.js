@@ -6,6 +6,7 @@ const studentArray = require('./InitialData');
 app.use(express.urlencoded());
 
 const studentData = [...studentArray];
+let maxid = studentData.length;
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -35,8 +36,9 @@ app.post('/api/student', (req,res) => {
     if(isNullorUndefined(name) || isNullorUndefined(currentClass)|| isNullorUndefined(division)){
         res.sendStatus(400);
     }else{
-    const ID = studentData.length+1;
-    newStudent.id = ID;
+    const newid = maxid+1;
+    maxid = newid;
+    newStudent.id = newid;
     newStudent.currentClass = Number(currentClass);
     studentData.push(newStudent);
     res.send({id:ID});
