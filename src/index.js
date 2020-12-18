@@ -75,9 +75,9 @@ app.put('/api/student/:id' ,(req,res) => {
 });
 
 
-app.delete('/api/student/:id' ,(req,res)=>{
-    const idx = req.params.idx;
-    const matchedidx = studentData.findIndex((student)=> student.idx ===Number(idx));
+app.delete("/api/student/:id" ,(req,res)=>{
+    const idx = req.params.id;
+    const matchedidx = studentData.findIndex((student) => student.idx ===Number(idx));
     if (matchedidx === -1){
         res.sendStatus(404);
     }else{
