@@ -75,18 +75,18 @@ app.put('/api/student/:id' ,(req,res) => {
 });
 
 
-app.delete("/api/student/:id" ,(req,res)=>{
+app.delete("/api/student/:id" ,(req, res)=>{
     const idtosearch = req.params.id;
-    const matchedidx = studentData.findIndex((student) => student.id ===Number(idtosearch));
+    const matchedidx = studentData.findIndex((student) => student.id=== Number(idtosearch));
     if (matchedidx === -1){
         res.sendStatus(404);
-    }else{
+    } else {
         studentData.splice(matchedidx, 1);
         res.sendStatus(200);
     }
 });
  
 
-app.listen(port, () => console.log(`App listening on port ${port}!`));
+app.listen(port, () => console.log(`App listening on port ${port}!`))
 
 module.exports = app;   
